@@ -5,15 +5,15 @@
     <title>helloDocker</title>
 </head>
 <body>
-    <h1 style="color: darkred">Hello from this ASP.NET Core app running from a Windows container!</h1>
+    <h1 style="color: darkred">Hello from this ASP.NET Core app running from a Linux container!</h1>
     <p>
         Since server start, you are the
         <stong>@ViewData["visitorNumber"]</stong>
         -th visitor.
     </p>
     <p>
-        The container's favourite flower, according to the enviromental setting established in the Dockerfile with an ENV command, is
-        <stong>@ViewData["enviromentalFlower"]</stong>
+        The container's favourite flower, according to the enviromental setting established in the Dockerfile with an ENV command OR the container's setting established with -e when starting the container, is
+        <stong>"@ViewData["enviromentalFlower"]"</stong>
         .
     </p>
 </body>
