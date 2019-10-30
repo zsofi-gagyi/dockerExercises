@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>helloDocker</title>
+</head>
+<body>
+    <h1 style="color: darkred">Hello from this ASP.NET Core app running from a Windows container!</h1>
+    <p>
+        Since server start, you are the
+        <stong>@ViewData["visitorNumber"]</stong>
+        -th visitor.
+    </p>
+    <p>
+        The container's favourite flower, according to the enviromental setting established in the Dockerfile with an ENV command (possibly overwritten at the creation of the container with the -e command), is
+        <stong>"@ViewData["enviromentalFlower"]"</stong>
+        .
+    </p>
+</body>
+</html>
