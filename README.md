@@ -15,7 +15,7 @@ They can be run
 
 <h3>Multiple containers</h3>
 
-The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies the "consumer" app about them, which shows these logs at localhost:8000. Both run in linux containers.
+The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies the "consumer" app about them, which shows these logs at localhost:8000. Both run in linux containers, and communicate over HTTP.
 
 On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository/docker/gagyizsofi/multiple_containers>here</a>. 
 
