@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using consumer.Memory;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace helloDocker
 {
@@ -12,6 +12,7 @@ namespace helloDocker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton(new NewsStore());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

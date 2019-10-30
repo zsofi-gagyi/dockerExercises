@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Text;
 
@@ -10,9 +11,9 @@ namespace helloDocker.Controllers
         static int visitorCount = 0;
         private readonly HttpClient _client;
 
-        public DefaultController(IHttpClientFactory httpClientFactory)
+        public DefaultController()
         {
-            _client = httpClientFactory.CreateClient("consumer");
+            _client = new HttpClient();
         }
 
         [HttpGet("/")]
@@ -20,7 +21,7 @@ namespace helloDocker.Controllers
         {
             visitorCount++;
             ViewData["visitorNumber"] = visitorCount;
-            ViewData["enviromentalFlower"] = System.Environment.GetEnvironmentVariable("flower");
+            ViewData["consumerURL"] = Environment.GetEnvironmentVariable("consumerURL");
 
             NotifyConsumer();  
 
@@ -29,11 +30,11 @@ namespace helloDocker.Controllers
 
         private void NotifyConsumer()
         {
-            var news = new { Event = "Visitor nr." + visitorCount + "has arrived!" };
+            var news = new { VisitorNr = visitorCount , Time = DateTime.Now };
             var newsJson = JsonConvert.SerializeObject(news);
             HttpContent message = new StringContent(newsJson, Encoding.UTF8, "application/json");
 
-            _client.PostAsync("", message);
+            _client.PostAsync(Environment.GetEnvironmentVariable("consumerURL") + "/update", message);
         }
     }
 }

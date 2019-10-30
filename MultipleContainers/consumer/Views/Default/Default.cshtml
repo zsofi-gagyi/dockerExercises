@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>consumer</title>
+</head>
+<body>
+    <h1 style="color: darkred">Hello from the Consumer module!</h1>
+    <p>News from our Producer module:</p>
+    <ul>
+        @foreach(var news in (LinkedList<string[]>)ViewData["news"])
+        {
+        <li>At @news[0], visitor nr. @news[1] has arrived!</li>
+        }
+    </ul>
+</body>
+</html>
