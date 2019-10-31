@@ -1,4 +1,4 @@
-<h2>Docker exercises</h2>
+<h2>Docker + RabbitMQ exercises</h2>
 
 These are very simple ASP.NET apps - the challenge was to run them from (connected) containers.
 
@@ -13,7 +13,7 @@ They can be run
 - with Docker, for example "docker run -p 8000:80 -e flower="violet" --name test_container gagyizsofi/first_app:linux"
 - with Docker Compose, using <a href=https://github.com/zsofi-gagyi/dockerExercises/blob/linux/docker-compose.yml>my first YAML file</a> (it will also run at localhost:8000).
 
-<h3>Multiple containers</h3>
+<h3>Two containers</h3>
 
 The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies the "consumer" app about them, which shows these logs at localhost:8000. Both run in linux containers, and communicate with each other over HTTP.
 
@@ -21,9 +21,9 @@ On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository
 
 They can be run with Docker Compose, using <a href=https://github.com/zsofi-gagyi/dockerExercises/blob/master/MultipleContainers/docker-compose.yaml>this YAML file</a>.
 
-<h3>Multiple containers with RabbitMQ</h3>
+<h3>Two containers with RabbitMQ</h3>
 
-The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies about them the RabbitMQ instance, which in turn forwards this information to the "consumer" app. The consumer's logs can be seen at localhost:8000. All components run in linux containers, and the C# components communicate with the RabbitMQ module using the RabbitMQ.Client NuGet package.
+The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies about them the RabbitMQ instance, which in turn forwards this information to the "consumer" app. The consumer's logs can be seen at localhost:8000. All components run in linux containers, and the C# components communicate with the RabbitMQ module using the RabbitMQ.Client NuGet package (over the AMQP protocol).
 
 On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository/registry-1.docker.io/gagyizsofi/two_containers_with_rabbit>here</a>. 
 
