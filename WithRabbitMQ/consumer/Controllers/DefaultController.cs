@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using consumer.Memory;
-using rabbitConsumer.Controllers;
 
 namespace helloDocker.Controllers
 {
@@ -9,7 +8,6 @@ namespace helloDocker.Controllers
         [HttpGet("/")]
         public IActionResult Default()
         {
-            UpdateReceiver.ReceiveUpdates();
             ViewData["news"] = NewsStore.news;
             return View();
         }

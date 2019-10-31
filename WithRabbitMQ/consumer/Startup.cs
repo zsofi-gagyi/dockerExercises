@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using rabbitConsumer.Controllers;
 
 namespace helloDocker
 {
@@ -13,6 +14,7 @@ namespace helloDocker
         {
             services.AddMvc();
             services.AddSingleton(new NewsStore());
+            services.AddSingleton(new UpdateReceiver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

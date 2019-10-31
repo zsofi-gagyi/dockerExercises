@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
-using System.Net.Http;
-using System;
 using RabbitMQ.Client;
 using System.Text;
 
@@ -17,7 +15,6 @@ namespace helloDocker.Controllers
         {
             visitorCount++;
             ViewData["visitorNumber"] = visitorCount;
-            ViewData["consumerURL"] = Environment.GetEnvironmentVariable("consumerURL");
 
             NotifyConsumer();  
 
@@ -35,10 +32,11 @@ namespace helloDocker.Controllers
                 using (var channel = connection.CreateModel())
                 {
                     channel.QueueDeclare(queue: "news_from_the_producer",
-                                 durable: false,
+                                 durable: true,
                                  exclusive: false,
                                  autoDelete: false,
-                                 arguments: null); // idempotent - repeating it is not a problem
+                                 arguments: null); 
+                    // idempotent - repeating it is not a problem
 
                     var body = Encoding.UTF8.GetBytes(newsJson);
 

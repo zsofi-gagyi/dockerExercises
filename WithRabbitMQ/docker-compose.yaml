@@ -5,7 +5,7 @@ services:
    ports:
       - "5672:5672"
   producer:
-    image: gagyizsofi/two_containers_with_rabbit:producer
+    image: gagyizsofi/two_containers_with_rabbit:producer_durable_true
     ports:
       - "8001:81"
     environment:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - rabbit
   consumer:
-    image: gagyizsofi/two_containers_with_rabbit:consumer_test
+    image: gagyizsofi/two_containers_with_rabbit:consumer_durable_true
     ports:
       - "8000:80"
     environment:

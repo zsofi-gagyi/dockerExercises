@@ -7,17 +7,16 @@ EXPOSE 81
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["rabbitConsumer.csproj", ""]
-RUN dotnet restore "./rabbitConsumer.csproj"
+COPY ["rabbitProducer.csproj", ""]
+RUN dotnet restore "./rabbitProducer.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "rabbitConsumer.csproj" -c Release -o /app
+RUN dotnet build "rabbitProducer.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "rabbitConsumer.csproj" -c Release -o /app
+RUN dotnet publish "rabbitProducer.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "rabbitConsumer.dll"]
-
+ENTRYPOINT ["dotnet", "rabbitProducer.dll"]
