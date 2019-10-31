@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  rabbit:
+   image: rabbitmq:3
+   ports:
+      - "5672:5672"
+  producer:
+    image: gagyizsofi/two_containers_with_rabbit:producer
+    ports:
+      - "8001:81"
+    environment:
+      - ASPNETCORE_URLS=http://+:81
+    depends_on:
+      - rabbit
+  consumer:
+    image: gagyizsofi/two_containers_with_rabbit:consumer_test
+    ports:
+      - "8000:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - rabbit
