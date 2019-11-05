@@ -21,10 +21,23 @@ On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository
 
 They can be run with Docker Compose, using <a href=https://github.com/zsofi-gagyi/dockerExercises/blob/master/MultipleContainers/docker-compose.yaml>this YAML file</a>.
 
-<h3>Two containers with RabbitMQ</h3>
+<h3>Two containers with RabbitMQ, producer-consumer model*</h3>
 
-The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies about them the RabbitMQ instance, which in turn forwards this information to the "consumer" app. The consumer's logs can be seen at localhost:8000. All components run in linux containers, and the C# components communicate with the RabbitMQ module using the RabbitMQ.Client NuGet package (over the AMQP protocol).
+The "producer" app at localhost:8001 counts the visitors arriving at the site, and notifies about them the RabbitMQ instance, which in turn forwards this information to the "consumer" app. The consumer's logs can be seen at localhost:8000.
 
 On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository/registry-1.docker.io/gagyizsofi/two_containers_with_rabbit>here</a>. 
 
 They can be run with Docker Compose, using <a href=https://github.com/zsofi-gagyi/dockerExercises/blob/master/WithRabbitMQ/docker-compose.yaml>this YAML file</a>.
+
+<h3>FizzBuzz as microservice (three containers with RabbitMQ, publisher-subscriber model) [under construction]*</h3> 
+
+The "counter" app counts to 200, and pushes its findings in the "fizz", "buzz" and "fizzbuzz" logs at the RabbitMQ instance. There are two instances of the same logging app, one subscribed to the "fizz" + "fizzbuzz" logs, the other to the "buzz" + "fizzbuzz" ones. The logs received by them can be read in a console, after running the <strong>\" docker logs multiple_of_3\"</strong> or <strong>\" docker logs multiple_of_5\"</strong> command.
+
+On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository/registry-1.docker.io/gagyizsofi/two_containers_with_rabbit>here</a>. 
+
+They can be run with Docker Compose, using <a href=https://github.com/zsofi-gagyi/dockerExercises/blob/master/WithRabbitMQ/docker-compose.yaml>this YAML file</a>.
+
+<br>
+<br>
+
+ <em>*All components run in linux containers, and the C# components communicate with the RabbitMQ module using the RabbitMQ.Client NuGet package (over the AMQP protocol).</em>
