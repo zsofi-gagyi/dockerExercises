@@ -31,7 +31,7 @@ They can be run with Docker Compose, using <a href=https://github.com/zsofi-gagy
 
 <h3>FizzBuzz as microservice (three containers with RabbitMQ, publisher-subscriber model) [under construction]*</h3> 
 
-The "counter" app counts to 200, and pushes its findings in the "fizz", "buzz" and "fizzbuzz" logs at the RabbitMQ instance. There are two instances of the same logging app, one subscribed to the "fizz" + "fizzbuzz" logs, the other to the "buzz" + "fizzbuzz" ones. The logs received by them can be read in a console, after running the <strong>\" docker logs multiple_of_3\"</strong> or <strong>\" docker logs multiple_of_5\"</strong> command.
+The "counter" app counts to 200, and pushes its findings in the "fizz", "buzz" and "fizzbuzz" topics at the RabbitMQ instance. There are two instances of the same logging app, one subscribed to the "fizz" + "fizzbuzz" topics, the other to the "buzz" + "fizzbuzz" ones. The logs received by them can be read in a console, after running the <strong>\" docker logs multiple_of_3\"</strong> or <strong>\" docker logs multiple_of_5\"</strong> command.
 
 On <strong>Docker Hub</strong>, it's <a href=https://cloud.docker.com/repository/registry-1.docker.io/gagyizsofi/two_containers_with_rabbit>here</a>. 
 
